@@ -1,0 +1,29 @@
+name: Build and Test
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build_test:
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest']
+        racket-variant: ['BC', 'CS']
+        racket-version: ['7.9']
+    runs-on: ${{ matrix.os }}
+    name: Version ${{ matrix.racket-version }} of ${{ matrix.racket-variant }} Racket on ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Racket
+        uses: Bogdanp/setup-racket@v0.11
+        with:
+          architecture: 'x64'
+          distribution: 'full'
+          variant: ${{ matrix.racket-variant }}
+          version: ${{ matrix.racket-version }}
+      - name: Install Package and its Dependencies
+        run: raco pkg install --auto --batch
+      - name: Build
+        run: raco make main.rkt
+      - name: Run Tests
+        run: raco test main.rkt

@@ -1,17 +1,15 @@
 #lang racket
 
-(module+ test
-  (require rackunit))
-
-
-(module+ test
-  (if-windows (check-equal? 3 3) (check-equal? 2 3))
-  (check-equal? (+ 2 2) 4))
-
-
 (define-syntax if-windows (if (equal? 'windows (system-type))
                               (syntax-rules () [(if-windows x y) x])
                               (syntax-rules () [(if-windows x y) y])))
+
+(module+ test
+  (require rackunit)
+  (if-windows
+    (check-equal? 3 3)
+    (check-equal? 3 3))
+  (check-equal? (+ 2 2) 4))
 
 (if-windows
  (begin
