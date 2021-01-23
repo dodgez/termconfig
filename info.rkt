@@ -6,3 +6,4 @@
 (define pkg-desc "Cross-platform terminal helper library in Racket")
 (define version "0.1")
 (define pkg-authors '(dodgez))
+(define test-omit-paths '("private"))
