@@ -27,6 +27,7 @@ To see more information, go to the issues and projects tabs in the GitHub reposi
 @itemlist[
 @item{[X] Raw mode}
 @item{[ ] Cursor movement}
+@item{[ ] Foreground and background colors}
 @item{[ ] Retrieve input in raw mode (see next item)}
 @item{[ ] Callbacks or polling for input}
 @item{[ ] Resize and cursor movement events}

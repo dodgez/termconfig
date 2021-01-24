@@ -17,6 +17,7 @@ To see more information, go to the issues and projects tabs in the GitHub reposi
 
 - [X] Raw mode
 - [ ] Cursor movement
+- [ ] Foreground and background colors
 - [ ] Retrieve input in raw mode (see next item)
 - [ ] Callbacks or polling for input
 - [ ] Resize and cursor movement events
