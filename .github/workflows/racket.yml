@@ -23,6 +23,6 @@ jobs:
       - name: Install Package and its Dependencies
         run: raco pkg install --auto --batch
       - name: Build
-        run: raco make main.rkt
+        run: raco setup termconfig
       - name: Run Tests
         run: raco test main.rkt
