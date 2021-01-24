@@ -6,10 +6,9 @@ jobs:
   build_test:
     strategy:
       matrix:
-        os: ['ubuntu-latest', 'windows-latest']
         racket-variant: ['BC', 'CS']
-        racket-version: ['7.9']
-    runs-on: ${{ matrix.os }}
+        racket-version: ['7.8', '7.9']
+    runs-on: ubuntu-latest
     name: Version ${{ matrix.racket-version }} of ${{ matrix.racket-variant }} Racket on ${{ matrix.os }}
     steps:
       - name: Checkout
