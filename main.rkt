@@ -19,5 +19,8 @@
    (require "private/unix.rkt")
    (provide (all-from-out "private/unix.rkt"))))
 
+(require "private/common.rkt")
+(provide (all-from-out "private/common.rkt"))
+
 (module+ main (with-raw (display #"\x1b[31m Hello, World! \x1b[0m")))
 
