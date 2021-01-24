@@ -9,7 +9,7 @@ jobs:
         racket-variant: ['BC', 'CS']
         racket-version: ['7.8', '7.9']
     runs-on: ubuntu-latest
-    name: Version ${{ matrix.racket-version }} of ${{ matrix.racket-variant }} Racket on ${{ matrix.os }}
+    name: Version ${{ matrix.racket-version }} of ${{ matrix.racket-variant }} Racket
     steps:
       - name: Checkout
         uses: actions/checkout@v2
