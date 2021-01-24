@@ -16,18 +16,18 @@
 ; void cfmakeraw(struct termios *termios_p);
 (define-c cfmakeraw (_fun _termios-pointer -> _void))
 
-(define termios (cast (malloc 'atomic 36) _pointer _termios-pointer))
+(define termios #f)
 
 (define (enable-raw)
+  (when (ptr-equal? termios #f)
+    (set! termios (cast (malloc 'atomic 36) _pointer _termios-pointer))
+    (tcgetattr 0 termios))
   (define termtmp (cast (malloc 'atomic 36) _pointer _termios-pointer))
-  (tcgetattr 0 termios)
   (tcgetattr 0 termtmp)
   (cfmakeraw termtmp)
-  (tcsetattr 0 0 termtmp)
-  (void))
+  (tcsetattr 0 0 termtmp))
 (define (disable-raw)
-  (tcsetattr 0 0 termios)
-  (void))
-(define-syntax-rule (with-raw commands ...) (begin (enable-raw) commands ... (disable-raw)))
+  (tcsetattr 0 0 termios))
+(define-syntax-rule (with-raw commands ... last) (begin (enable-raw) commands ... (let ([ret last]) (disable-raw) ret)))
 
 (provide enable-raw disable-raw with-raw)
