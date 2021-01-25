@@ -11,6 +11,8 @@
 (define (move-cursor x y)
   (move-cursor-x x)
   (move-cursor-y y))
+(define (set-cursor x y)
+  (display (format "\x1b[~a;~aH" y x)))
 
 (require (for-syntax racket/match))
 (define-syntax (create-color-style stx)
