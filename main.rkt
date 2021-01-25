@@ -22,5 +22,8 @@
 (require "private/common.rkt")
 (provide (all-from-out "private/common.rkt"))
 
-(module+ main (with-raw (display #"\x1b[31m Hello, World! \x1b[0m")))
-
+(module+ main
+  (with-raw
+    (clear-screen)
+    (set-cursor 1 1)
+    (display "\x1b[31mHello, World!\x1b[0m")))
