@@ -39,4 +39,7 @@
 (create-color-style cyan 6)
 (create-color-style white 7)
 
+(define (clear-screen)
+  (display "\x1b[2J"))
+
 (provide (except-out (all-defined-out) create-color-style))
