@@ -13,6 +13,10 @@
   (move-cursor-y y))
 (define (set-cursor x y)
   (display (format "\x1b[~a;~aH" y x)))
+(define (show-cursor)
+  (display "\x1b[?25h"))
+(define (hide-cursor)
+  (display "\x1b[?25l"))
 
 (require (for-syntax racket/match))
 (define-syntax (create-color-style stx)
